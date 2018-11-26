@@ -1,6 +1,7 @@
 package com.zack.controller;
 
 import com.zack.model.Drug;
+import com.zack.model.Patient;
 import com.zack.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 @RequestMapping("/drug")
@@ -48,13 +50,30 @@ public class DrugController {
 
     @RequestMapping(value = "/add",  method = RequestMethod.POST)
     public ModelAndView addDrug1(@ModelAttribute("drug") Drug drug) {
+        List<Drug> drugs = drugService.getDrugs();
         try {
-            if (drugService.addDrug(drug).equals(drug.getDname()))
-                return new ModelAndView("result", "msg", drug.getDname()+" added successfully");
-            else
-                return new ModelAndView("error", "msg", "Drug already exist");
+            if (drugService.addDrug(drug).equals(drug.getDname())){
+                ModelAndView mv = new ModelAndView("index");
+                mv.addObject("addDrug", drug.getDname()+" added successfully");
+                mv.addObject("drug", new Drug());
+                mv.addObject("patient", new Patient());
+                mv.addObject("drugs", drugs);
+                return mv;
+            } else{
+                ModelAndView mv = new ModelAndView("index");
+                mv.addObject( "addDrugErr", "Drug already exist");
+                mv.addObject("drug", new Drug());
+                mv.addObject("patient", new Patient());
+                mv.addObject("drugs", drugs);
+                return mv;
+            }
         } catch (Exception e) {
-            return new ModelAndView("error", "msg", e.getMessage());
+            ModelAndView mv = new ModelAndView("index");
+            mv.addObject("addDrugErr", e.getMessage());
+            mv.addObject("drug", new Drug());
+            mv.addObject("patient", new Patient());
+            mv.addObject("drugs", drugs);
+            return mv;
         }
     }
 

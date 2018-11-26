@@ -7,12 +7,15 @@
 <c:url var="bootstrapJs" value="/resources/javascript/bootstrap.min.js"/>
 <c:url value="/resources/style/bootstrap.min.css" var="bootstrapCss"/>
 <c:url var="medical_symbol" value="../../resources/assets/medical-symbol.jpg"/>
+<c:url var="form_patient" value="../../resources/javascript/form.patient.js"/>
 
 <html>
 <head>
     <link rel="stylesheet" href="${bootstrapCss}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="${jQuery}"></script>
     <script type="text/javascript" src="${bootstrapJs}"></script>
+    <script type="text/javascript" src="${form_patient}"></script>
 </head>
 <body class="bg-light" cz-shortcut-listen="true">
 <header class="masthead mb-auto">
@@ -71,6 +74,16 @@
                     <button type="submit" class="btn btn-secondary">Add</button>
                 </div>
             </f:form>
+            <div class="text-center">
+                <c:if test="${addDrug != null}">
+                    <h4 class="text-success">${addDrug}</h4>
+                </c:if>
+            </div>
+            <div class="text-center">
+                <c:if test="${addDrugErr != null}">
+                    <h4 class="text-danger">${addDrugErr}</h4>
+                </c:if>
+            </div>
 
 
         </div>
@@ -97,7 +110,7 @@
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <f:label path="type">Type</f:label>
-                        <f:select path="type" cssClass="custom-select d-block w-100" id="country" required="true">
+                        <f:select path="type" cssClass="custom-select d-block w-100" id="type" required="true">
                             <f:option value="">Choose...</f:option>
                             <f:option value="in">In-Patient</f:option>
                             <f:option value="out">Out-Patient</f:option>
@@ -113,15 +126,15 @@
                             <f:option value="">Choose...</f:option>
                             <f:option value="Student">Student</f:option>
                             <f:option value="Employee">Employee</f:option>
-                            <f:option value=" Beneficiary">Beneficiary</f:option>
+                            <f:option value="Beneficiary">Beneficiary</f:option>
                         </f:select>
                         <div class="invalid-feedback">
                             Please provide a valid state.
                         </div>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div id="DayInput" class="col-md-3 mb-3">
                         <f:label path="days">Days</f:label>
-                        <f:input type="number" cssClass="form-control" path="days" placeholder="" required="true"/>
+                        <f:input type="number" cssClass="form-control" id="days" path="days" placeholder="" disabled="false"/>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
@@ -143,6 +156,16 @@
                 <button class="btn btn-primary btn-lg btn-block" type="submit">Add Patient</button>
 
             </f:form>
+            <div class="text-center">
+                <c:if test="${addedPatient != null}">
+                    <h4 class="text-success">${addedPatient}</h4>
+                </c:if>
+            </div>
+            <div class="text-center">
+                <c:if test="${addPatientError != null}">
+                    <h4 class="text-danger">${addPatientError}</h4>
+                </c:if>
+            </div>
         </div>
     </div>
 

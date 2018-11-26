@@ -64,13 +64,31 @@ public class PatientController {
 
     @RequestMapping(value = "/add",  method = RequestMethod.POST)
     public ModelAndView addDrug(@ModelAttribute("patient") Patient patient) {
+        List<Drug> drugs = drugService.getDrugs();
+
         try {
-            if (patientService.addPatient(patient) == patient.getId())
-                return new ModelAndView("result", "msg", patient.getName()+" added successfully");
-            else
-                return new ModelAndView("error", "msg", "Drug already exist");
+            if (patientService.addPatient(patient) == patient.getId()) {
+                ModelAndView mv = new ModelAndView("index");
+                mv.addObject("addedPatient", patient.getName() + " added successfully");
+                mv.addObject("drugs", drugs);
+                mv.addObject("drug", new Drug());
+                mv.addObject("patient", new Patient());
+                return mv;
+            }else {
+                ModelAndView mv = new ModelAndView("index");
+                mv.addObject("addPatientError", "Drug already exist");
+                mv.addObject("drugs", drugs);
+                mv.addObject("drug", new Drug());
+                mv.addObject("patient", new Patient());
+                return mv;
+            }
         } catch (Exception e) {
-            return new ModelAndView("error", "msg", e.getMessage());
+            ModelAndView mv = new ModelAndView("index");
+            mv.addObject("addPatientError", e.getMessage());
+            mv.addObject("drugs", drugs);
+            mv.addObject("drug", new Drug());
+            mv.addObject("patient", new Patient());
+            return mv;
         }
     }
 

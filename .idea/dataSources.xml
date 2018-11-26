@@ -11,5 +11,24 @@
         <property name="v$session.program" value="DataGrip" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="sf/Hibernate" uuid="a21e5d6d-7f53-42a5-a135-dbc51478bf8b">
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <configured-by-url>true</configured-by-url>
+      <remarks>Hibernate
+
+C:/Users/zackb/IdeaProjects/HealthCenter/src/main/webapp/WEB-INF/spring-servlet.xml</remarks>
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="db" uuid="abd7df70-b7f5-4ee5-8afd-3c95e0189046">
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>jakarta commons-dbcp
+
+C:/Users/zackb/IdeaProjects/HealthCenter/src/main/webapp/WEB-INF/spring-servlet.xml</remarks>
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@localhost:1521:xe</jdbc-url>
+    </data-source>
   </component>
 </project>

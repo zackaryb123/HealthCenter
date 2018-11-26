@@ -21,7 +21,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="sf" />
+          <unit-entry name="sf" value="a21e5d6d-7f53-42a5-a135-dbc51478bf8b" />
         </datasource-map>
         <naming-strategy-map />
       </configuration>

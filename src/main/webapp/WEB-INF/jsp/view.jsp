@@ -22,20 +22,38 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Patients</span>
+                    <a id="PatientLink" class="d-flex align-items-center text-muted" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </a>
+                </h6>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a id="PatientLink" class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            Patients
+                        <a id="InPatientStuLink" class="nav-link" href="#">
+                            <%--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>--%>
+                            In-Patient Students
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a id="DrugLink" class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-                            Drugs
+                        <a id="InPatientEmpLink" class="nav-link" href="#">
+                            <%--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>--%>
+                            In-Patient Emp/Ben
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="OutPatientLink" class="nav-link" href="#">
+                            <%--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>--%>
+                            Out-Patients
                         </a>
                     </li>
                 </ul>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Drugs</span>
+                    <a id="DrugLink" class="d-flex align-items-center text-muted" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    </a>
+                </h6>
             </div>
         </nav>
 
@@ -90,6 +108,131 @@
                                 </form>
                             </td>
                         </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <table id="InPatientStuTable" class="table table-striped table-sm" hidden>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <%--<th>TYPE</th>--%>
+                        <%--<th>CATEGORY</th>--%>
+                        <th>DAYS</th>
+                        <th>XRAYS</th>
+                        <th>SCANNING</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="i" begin="0" end="${patients.size()-1}">
+                        <c:if test="${patients.get(i).type.equals('in') && patients.get(i).category.equals('Student')}">
+                        <tr>
+                            <td>${patients.get(i).id}</td>
+                            <td>${patients.get(i).name}</td>
+                            <%--<td>${patients.get(i).type}</td>--%>
+                            <%--<td>${patients.get(i).category}</td>--%>
+                            <td>${patients.get(i).days}</td>
+                            <td>${patients.get(i).xrays}</td>
+                            <td>${patients.get(i).scanning}</td>
+                            <td>
+                                <form style="margin: 0" action="/patient/edit" method="get">
+                                        <%--<f:form action="/patient/edit" method="get" modelAttribute="patient">--%>
+                                    <input name="id" value="${patients.get(i).id}" hidden/>
+                                        <%--<f:input path="id" value="${patients.get(i).id}" hidden="true"/>--%>
+                                    <button class="btn btn-sm btn-outline-secondary" type="submit">
+                                        <a class="nav-link ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        </a>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        </c:if>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+
+
+                <table id="InPatientEmpTable" class="table table-striped table-sm" hidden>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <%--<th>TYPE</th>--%>
+                        <%--<th>CATEGORY</th>--%>
+                        <th>DAYS</th>
+                        <th>XRAYS</th>
+                        <th>SCANNING</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="i" begin="0" end="${patients.size()-1}">
+                        <c:if test="${patients.get(i).type.equals('in') && (patients.get(i).category.equals('Employee') || patients.get(i).category.equals('Beneficiary'))}">
+                        <tr>
+                            <td>${patients.get(i).id}</td>
+                            <td>${patients.get(i).name}</td>
+                            <%--<td>${patients.get(i).type}</td>--%>
+                            <%--<td>${patients.get(i).category}</td>--%>
+                            <td>${patients.get(i).days}</td>
+                            <td>${patients.get(i).xrays}</td>
+                            <td>${patients.get(i).scanning}</td>
+                            <td>
+                                <form style="margin: 0" action="/patient/edit" method="get">
+                                        <%--<f:form action="/patient/edit" method="get" modelAttribute="patient">--%>
+                                    <input name="id" value="${patients.get(i).id}" hidden/>
+                                        <%--<f:input path="id" value="${patients.get(i).id}" hidden="true"/>--%>
+                                    <button class="btn btn-sm btn-outline-secondary" type="submit">
+                                        <a class="nav-link ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        </a>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        </c:if>
+                    </c:forEach>
+                    </tbody>
+                </table>
+
+                <table id="OutPatientTable" class="table table-striped table-sm" hidden>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <%--<th>TYPE</th>--%>
+                        <th>CATEGORY</th>
+                        <%--<th>DAYS</th>--%>
+                        <th>XRAYS</th>
+                        <th>SCANNING</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="i" begin="0" end="${patients.size()-1}">
+                        <c:if test="${patients.get(i).type.equals('out')}">
+                        <tr>
+                            <td>${patients.get(i).id}</td>
+                            <td>${patients.get(i).name}</td>
+                            <%--<td>${patients.get(i).type}</td>--%>
+                            <td>${patients.get(i).category}</td>
+                            <%--<td>${patients.get(i).days}</td>--%>
+                            <td>${patients.get(i).xrays}</td>
+                            <td>${patients.get(i).scanning}</td>
+                            <td>
+                                <form style="margin: 0" action="/patient/edit" method="get">
+                                        <%--<f:form action="/patient/edit" method="get" modelAttribute="patient">--%>
+                                    <input name="id" value="${patients.get(i).id}" hidden/>
+                                        <%--<f:input path="id" value="${patients.get(i).id}" hidden="true"/>--%>
+                                    <button class="btn btn-sm btn-outline-secondary" type="submit">
+                                        <a class="nav-link ">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                        </a>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        </c:if>
                     </c:forEach>
                     </tbody>
                 </table>
